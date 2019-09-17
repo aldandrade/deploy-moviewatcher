@@ -12,14 +12,10 @@
                       </button>
                 </ng-container>
                 <ng-template #isFavorited>
-                    <button mat-button (click)="favoriteMovie(movie)">
-                        <mat-icon class="star">
-                            star_border
-                        </mat-icon>
-                      </button>
+
                 </ng-template>
               </div>
-                <mat-card-title>{{movie.title | truncate:[45]}} </mat-card-title>
+                <mat-card-title>{{movie.title | truncate:['45']}} </mat-card-title>
                 <mat-card-subtitle>{{movie.year}}</mat-card-subtitle>
              </mat-card-header>
           <ng-container *ngIf="movie.poster.length < 6; else noPoster">
