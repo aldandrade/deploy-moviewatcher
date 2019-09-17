@@ -1,0 +1,62 @@
+.gridDiv{
+  display: flex;
+  flex-flow: row wrap;
+  position: relative;
+  padding: 10% 0% 0% 0%;
+}
+.poster{
+ padding: 2px;
+ height: 60%;
+}
+img{
+  max-height: 450px;
+  min-height: 450px;
+  object-fit: cover;
+}
+.mat-display-2{
+  margin: 0%;
+  background-color :#673ab7;
+  background-size: 100%;
+}
+.mat-display-2 h2
+{
+ position: relative;
+ text-align: center;
+ color: white;
+}
+
+.searchClass {
+  display: flex;
+  flex-direction: column;
+ }
+ mat-label{
+   color: white;
+ }
+.searchBar
+{
+  background-color: #673ab7;
+  width: auto;
+  color: white;
+  position: relative;
+  padding: 0% 18%;
+  border-color: white;
+  border: 3px;
+}
+a{
+  text-decoration: none;
+}
+a:visited a:link{
+color: black;
+}
+
+.mat-card {
+  flex: 0 1 calc(20% - 8px);
+  height: max-content;
+  width: 320px;
+  margin-bottom: 3%;
+}
+
+.star{
+  border-color: gold;
+  color: gold;
+}

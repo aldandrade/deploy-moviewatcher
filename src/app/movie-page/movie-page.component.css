@@ -1,0 +1,59 @@
+mat-card {
+  min-height: fit-content;
+  align-content: center;
+  max-height: fit-content;
+  max-width: fit-content;
+}
+.mat-card{
+ display: flex;
+ min-height: fit-content;
+
+}
+.movieStuff{
+  font-size-adjust: inherit;
+}
+.poster{
+  height: fit-content;
+  width: fit-content;
+  align-content: center;
+  object-fit: fill;
+  object-position: center;
+  padding: 7% 4%;
+
+}
+.item{
+  border: 2px solid blueviolet;
+  border-radius: 2px;
+  margin: .5em;
+  padding: 2%;
+  width: auto;
+  height: fit-content;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+h2{
+  font-size: 2.4em;
+}
+
+p{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1.2em;
+}
+
+.mat-raised-button{
+  background-color: black;
+  color: aliceblue;
+}
+
+#favoriteButton{
+  background-color: black;
+  color: white;
+}
+
+#unfavoriteButton{
+  background-color: gold;
+  color: black;
+}
+
+
+

@@ -1,0 +1,18 @@
+Component list:
+Header
+ -Upper Search bar
+ -HomePagebutton (logo inside)
+ -FavoritesButton
+HomePage
+ -Giant Logo
+ -HomePageSearchBar
+ -HomePageFavoritesGallery
+  -List<FavoriteMoviesCards>
+ -HomePageMovieCard
+  -MoviePoster
+  -MovieInfo
+  -MovieFavoriteButton
+MainMoviePage
+ -MoviePosterBigger
+ -MovieInfoExtended
+ -MovieFavoriteButton

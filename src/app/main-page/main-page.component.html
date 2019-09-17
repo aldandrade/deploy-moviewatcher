@@ -1,0 +1,59 @@
+<div fxFlexFill fxLayout="column">
+  <div fxLayout="column" class="mat-display-2">
+    <title>MovieWatcher</title>
+    <h2>MovieWatcher</h2>
+  </div>
+  <div class="searchClass">
+    <mat-form-field class="searchBar">
+        <mat-label><mat-icon>search</mat-icon><b> Search a movie</b></mat-label>
+      <input matInput type="text" placeholder=''[(ngModel)]="movieTitle" (keydown.enter)="search(movieTitle)">
+      <button mat-button *ngIf="movieTitle" matSuffix mat-icon-button aria-label="Clear" (click)="movieTitle=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <ng-container *ngIf="noMovieToShow && movieTitle.length > 1; else elseTemplate">
+    <div class="gridDiv" xLayout="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+      <mat-card *ngFor="let movie of movieList" class="movie-card mat-elevation-z10">
+        <mat-card-header fxLayout="row">
+              <div fxLayout="column">
+                <ng-container *ngIf="movie.favorite; else isFavorited">
+                    <button mat-button (click)="unfavoriteMovie(movie)">
+                        <mat-icon class="star">
+                          star
+                        </mat-icon>
+                      </button>
+                </ng-container>
+                <ng-template #isFavorited>
+                    <button mat-button (click)="favoriteMovie(movie)">
+                        <mat-icon class="star">
+                            star_border
+                        </mat-icon>
+                      </button>
+                </ng-template>
+              </div>
+                <mat-card-title>{{movie.title | truncate:[45]}} </mat-card-title>
+                <mat-card-subtitle>{{movie.year}}</mat-card-subtitle>
+             </mat-card-header>
+        <ng-container *ngIf="movie.poster.length < 6; else noPoster">
+           <img mat-card-image src="../../assets/no_poster.jpg" alt="Poster">
+        </ng-container>
+        <ng-template #noPoster>
+            <a [routerLink]="['/movie/',movie.id]">
+          <img mat-card-image [src]="movie.poster" alt="Poster"/>
+        </a>
+        </ng-template>
+    </mat-card>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="noMovieToShow; else elseTemplate">
+      <mat-paginator [length]="movieCount" [pageSize]="10" (page)="onPageEvent($event)">
+        </mat-paginator>
+    </ng-container>
+    <ng-template #elseTemplate>
+</ng-template>
+  <ng-template #elseTemplate>
+
+  </ng-template>
+
+</div>

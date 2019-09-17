@@ -1,0 +1,66 @@
+.gridDiv{
+  display: flex;
+  flex-flow: row wrap;
+  position: relative;
+}
+.poster{
+ padding: 2px;
+ height: 60%;
+}
+img{
+  max-height: 450px;
+  min-height: 450;
+  object-fit: cover;
+}
+mat-card-header-text{
+  padding: 0%;
+}
+
+ mat-label{
+   color: white;
+ }
+.searchBar
+{
+  background-color: #673ab7;
+  width: auto;
+  color: white;
+  position: relative;
+  padding: 0% 18%;
+  border-color: white;
+  border: 3px;
+}
+a{
+  text-decoration: none;
+}
+a:visited a:link{
+color: black;
+}
+
+.mat-card {
+  flex: 0 1 calc(20% - 8px);
+  height: max-content;
+  width: 320px;
+  margin-bottom: 3%;
+}
+#favoriteButton{
+  background-color: black;
+  color: white;
+}
+mat-card-title{
+  min-height: 50px;
+}
+#unfavoriteButton{
+  background-color: gold;
+  color: black;
+}
+button:active{
+ background-color: gold;
+}
+button{
+  padding: 2px;
+}
+.star{
+  border-color: black;
+  color: gold;
+
+}
