@@ -60,3 +60,9 @@ color: black;
   border-color: gold;
   color: gold;
 }
+.notFound{
+  align-content: center;
+  align-self: center;
+  max-width: 33%;
+  max-height: 25%;
+}

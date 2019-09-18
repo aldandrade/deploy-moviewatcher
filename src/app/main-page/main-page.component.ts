@@ -19,7 +19,8 @@ export class MainPageComponent implements OnInit {
   pages: number;
   page: PageEvent;
   movieToShow: Observable<MovieModel>;
-  noMovieToShow = false;
+  moveisToShow = false;
+  searchDone = false;
   lastSearch = '' ;
 
   constructor(private movieSearch: MovieServiceService,
@@ -39,6 +40,7 @@ export class MainPageComponent implements OnInit {
 
   search(movieTitle: string): void {
     if (movieTitle !== this.lastSearch ) {
+      this.searchDone = true;
       this.lastSearch = movieTitle;
       this.movieSearch.getFromMovies(this.movieTitle).subscribe(
         (response: MovieModel[]) => this.handleMovieResponse(response),
@@ -62,11 +64,16 @@ export class MainPageComponent implements OnInit {
       console.error();
     }
     );
-    this.openSnackBar(movie.title + 'was favorited!', 'Undo');
+    this.openSnackBar(movie.title + ' was favorited!', 'Undo Favorited', movie);
 
   }
-  openSnackBar(movieTitle: string, undo: string){
-    this._snack.open(movieTitle, undo);
+  openSnackBar(movieTitle: string, undo: string, movie: MovieModel){
+    let undoClicked =  this._snack.open(movieTitle, undo, {duration: 1500});
+    if(undo.includes('Favorited')){
+      undoClicked.onAction().subscribe(() => this.unfavoriteMovie(movie));
+    } else {
+    undoClicked.onAction().subscribe(() => this.favoriteMovie(movie));
+  }
   }
   unfavoriteMovie(movie: MovieModel): void {
     this.movieSearch.unfavoriteMovie(movie).subscribe(
@@ -77,15 +84,16 @@ export class MainPageComponent implements OnInit {
         console.log(error);
       }
     );
-    this.openSnackBar(movie.title + 'was unfavorited!', 'Undo');
+    this.openSnackBar(movie.title + ' was unfavorited!', 'Undo Unfav', movie);
   }
   handleMovieResponse(response: MovieModel[]) {
     if (response.length > 1) {
     this.movieList = response;
-    this.noMovieToShow = true;
+    this.moveisToShow = true;
   } else {
     this.movieList = [];
-    this.noMovieToShow = false;
+    this.moveisToShow = false;
+    this.searchDone = true;
   }
   }
 
@@ -99,7 +107,7 @@ export class MainPageComponent implements OnInit {
     this.currentPage = e.pageIndex + 1;
     this.search(this.movieTitle);
   } else {
-    this.noMovieToShow = false;
+    this.moveisToShow = false;
   }
     }
 

@@ -19,7 +19,7 @@ export class FavoritesComponent implements OnInit {
   pages: number;
   page: PageEvent;
   movieToShow: Observable<MovieModel>;
-  noMovieToShow = false;
+  moveisToShow = false;
 
   constructor(
     private movieSearch: MovieServiceService,
@@ -59,10 +59,10 @@ export class FavoritesComponent implements OnInit {
   handleMovieResponse(response: MovieModel[]) {
     if (response.length >= 1) {
       this.movieList = response;
-      this.noMovieToShow = true;
+      this.moveisToShow = true;
     }else{
 
-      this.noMovieToShow = false;
+      this.moveisToShow = false;
     }
   }
 
@@ -92,9 +92,9 @@ export class FavoritesComponent implements OnInit {
         console.log(error);
       }
     );
-    this.openSnackBar(movie.title + 'was unfavorited!', 'Undo');
+    this.openSnackBar(movie.title + ' was unfavorited!');
   }
-  openSnackBar(movieTitle: string, undo: string){
-    this._snack.open(movieTitle, undo);
+  openSnackBar(movieTitle: string){
+    this._snack.open(movieTitle, '' ,{duration: 1500});
   }
 }
