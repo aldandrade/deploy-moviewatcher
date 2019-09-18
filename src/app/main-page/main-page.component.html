@@ -53,16 +53,13 @@
         </mat-paginator>
 </ng-container>
 <div class="nofavs">
-    <ng-template #noMovies>
-        <ng-container *ngIf="!searchDone else moviesNotFound">
-
-    </ng-container>
-  <ng-template #moviesNotFound>
-
-      <img mat-card-image class = "notFound"  src="../../assets/no-favorite.png" alt="No Favorite image">
-      <h2 class="notFound">No movie was found with the given title!</h2>
-  </ng-template>
-    </ng-template>
+        <ng-container *ngIf="!searchDone else moviesNotFound"></ng-container>
+        <ng-container #moviesNotFound>
+          <ng-template #noMovies>
+              <img mat-card-image class = "notFound"  src="../../assets/no-favorite.png" alt="No Favorite image">
+              <h2 class="notFound">No movie was found with the given title!</h2>
+          </ng-template>
+        </ng-container>
 </div>
 
 </div>
