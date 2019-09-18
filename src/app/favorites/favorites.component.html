@@ -30,14 +30,18 @@
     </mat-card>
   </div>
 </ng-container>
+<ng-container #elseTemplate>
+
 <ng-container *ngIf="moveisToShow; else noFavoritesToShow">
     <mat-paginator [length]="movieCount" [pageSize]="10" (page)="onPageEvent($event)">
       </mat-paginator>
   </ng-container>
-<ng-template #noFavoritesToShow>
+  <ng-template #noFavoritesToShow>
+</ng-template>
+<ng-template #elseTemplate>
   <div class="nofavs">
-    <img mat-card-image class = "notFound"  src="../../assets/no-favorite.png" alt="No Favorite image">
+    <img mat-card-image class = "noFavoriteImage"  src="../../assets/no-favorite.png" alt="No Favorite image">
     <h2>You didn't favorited a movie yet!</h2>
   </div>
 </ng-template>
-
+</ng-container>

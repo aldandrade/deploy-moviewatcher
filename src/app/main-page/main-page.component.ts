@@ -59,16 +59,16 @@ export class MainPageComponent implements OnInit {
     this.movieSearch.favoriteMovie(movie).subscribe(
       response => {
         movie.favorite = true;
+        this.openSnackBar(movie.title + ' was favorited!', 'Undo Favorited', movie);
       },
       error => {
       console.error();
     }
     );
-    this.openSnackBar(movie.title + ' was favorited!', 'Undo Favorited', movie);
 
   }
   openSnackBar(movieTitle: string, undo: string, movie: MovieModel){
-    let undoClicked =  this._snack.open(movieTitle, undo, {duration: 1500});
+    let undoClicked =  this._snack.open(movieTitle, undo, {duration: 3000});
     if(undo.includes('Favorited')){
       undoClicked.onAction().subscribe(() => this.unfavoriteMovie(movie));
     } else {
@@ -79,17 +79,19 @@ export class MainPageComponent implements OnInit {
     this.movieSearch.unfavoriteMovie(movie).subscribe(
       response => {
         movie.favorite = false;
+        this.openSnackBar(movie.title + ' was unfavorited!', 'Undo Unfav', movie);
       },
       error => {
         console.log(error);
       }
     );
-    this.openSnackBar(movie.title + ' was unfavorited!', 'Undo Unfav', movie);
   }
   handleMovieResponse(response: MovieModel[]) {
     if (response.length > 1) {
     this.movieList = response;
     this.moveisToShow = true;
+    this.searchDone = true;
+
   } else {
     this.movieList = [];
     this.moveisToShow = false;

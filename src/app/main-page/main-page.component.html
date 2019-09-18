@@ -12,7 +12,7 @@
       </button>
     </mat-form-field>
   </div>
-  <ng-container *ngIf="moveisToShow && movieTitle.length > 1; else elseTemplate">
+  <ng-container *ngIf="moveisToShow && movieTitle.length > 0; else noMovies">
     <div class="gridDiv" xLayout="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
       <mat-card *ngFor="let movie of movieList" class="movie-card mat-elevation-z10">
         <mat-card-header fxLayout="row">
@@ -45,21 +45,18 @@
         </ng-template>
     </mat-card>
     </div>
+    <ng-container *ngIf="movieCount > 10 else noMovies">
+      <div>
+        <mat-paginator [length]="movieCount" [pageSize]="10" (page)="onPageEvent($event)">
+          </mat-paginator>
+      </div>
+    </ng-container>
   </ng-container>
-  <ng-container #elseTemplate></ng-container>
-
-  <ng-container *ngIf="moveisToShow && searchDone && movieList.length > 10 else noMovies">
-      <mat-paginator [length]="movieCount" [pageSize]="10" (page)="onPageEvent($event)">
-        </mat-paginator>
-</ng-container>
-<div class="nofavs">
-        <ng-container *ngIf="!searchDone else moviesNotFound"></ng-container>
-        <ng-container #moviesNotFound>
-          <ng-template #noMovies>
-              <img mat-card-image class = "notFound"  src="../../assets/no-favorite.png" alt="No Favorite image">
-              <h2 class="notFound">No movie was found with the given title!</h2>
-          </ng-template>
-        </ng-container>
+  <ng-template #noMovies>
+    <div *ngIf="searchDone" class = "notFound" >
+      <img mat-card-image  src="../../assets/no-favorite.png" alt="No Favorite image">
+      <h2>No movie was found with the given title!</h2>
+    </div>
+  </ng-template>
 </div>
 
-</div>
