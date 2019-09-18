@@ -46,6 +46,8 @@
     </mat-card>
     </div>
   </ng-container>
+  <ng-container #elseTemplate></ng-container>
+
   <ng-container *ngIf="moveisToShow && searchDone && movieList.length > 10 else noMovies">
       <mat-paginator [length]="movieCount" [pageSize]="10" (page)="onPageEvent($event)">
         </mat-paginator>
