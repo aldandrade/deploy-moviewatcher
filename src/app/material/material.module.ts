@@ -55,7 +55,8 @@ const MaterialComponents = [MatToolbarModule,
                             MatInputModule,
                             MatListModule,
                             MatGridListModule,
-                            FlexLayoutModule];
+                            FlexLayoutModule,
+                            MatSnackBarModule];
 
 @NgModule({
   declarations: [],

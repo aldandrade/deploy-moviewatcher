@@ -4,6 +4,7 @@ import { MovieModel } from '../movie.model';
 import {PageEvent} from '@angular/material/paginator';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
@@ -22,6 +23,7 @@ export class MainPageComponent implements OnInit {
   lastSearch = '' ;
 
   constructor(private movieSearch: MovieServiceService,
+              private _snack: MatSnackBar,
               private route: ActivatedRoute,
               private router: Router) {
     this.movieList = [];
@@ -60,7 +62,11 @@ export class MainPageComponent implements OnInit {
       console.error();
     }
     );
+    this.openSnackBar(movie.title + 'was favorited!', 'Undo');
 
+  }
+  openSnackBar(movieTitle: string, undo: string){
+    this._snack.open(movieTitle, undo);
   }
   unfavoriteMovie(movie: MovieModel): void {
     this.movieSearch.unfavoriteMovie(movie).subscribe(
@@ -71,7 +77,7 @@ export class MainPageComponent implements OnInit {
         console.log(error);
       }
     );
-      console.log("unfavorited");
+    this.openSnackBar(movie.title + 'was unfavorited!', 'Undo');
   }
   handleMovieResponse(response: MovieModel[]) {
     if (response.length > 1) {

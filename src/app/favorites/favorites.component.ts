@@ -1,17 +1,18 @@
-import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { MovieServiceService } from "../services/movie-service.service";
-import { MovieModel } from "../movie.model";
-import { PageEvent } from "@angular/material/paginator";
-import { Observable } from "rxjs";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { MovieServiceService } from '../services/movie-service.service';
+import { MovieModel } from '../movie.model';
+import { PageEvent } from '@angular/material/paginator';
+import { Observable } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: "app-favorites",
-  templateUrl: "./favorites.component.html",
-  styleUrls: ["./favorites.component.css"]
+  selector: 'app-favorites',
+  templateUrl: './favorites.component.html',
+  styleUrls: ['./favorites.component.css']
 })
 export class FavoritesComponent implements OnInit {
-  movieTitle = "";
+  movieTitle = '';
   movieList: MovieModel[];
   movieCount: number;
   currentPage = 1;
@@ -22,7 +23,8 @@ export class FavoritesComponent implements OnInit {
 
   constructor(
     private movieSearch: MovieServiceService,
-    private router: Router
+    private router: Router,
+    private _snack: MatSnackBar
   ) {
     this.movieList = [];
   }
@@ -65,7 +67,7 @@ export class FavoritesComponent implements OnInit {
   }
 
   goToMovie(movieId: string) {
-    this.router.navigate(["/movie/" + movieId]);
+    this.router.navigate(['/movie/' + movieId]);
   }
 
   onPageEvent(e) {
@@ -90,5 +92,9 @@ export class FavoritesComponent implements OnInit {
         console.log(error);
       }
     );
+    this.openSnackBar(movie.title + 'was unfavorited!', 'Undo');
+  }
+  openSnackBar(movieTitle: string, undo: string){
+    this._snack.open(movieTitle, undo);
   }
 }
