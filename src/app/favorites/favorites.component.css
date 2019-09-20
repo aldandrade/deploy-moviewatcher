@@ -2,10 +2,13 @@
   display: flex;
   flex-flow: row wrap;
   position: relative;
+  flex-grow: inherit;
+  max-height: fit-content;
 }
 .poster{
  padding: 2px;
  height: 60%;
+ object-fit: scale-down;
 }
 img{
   max-height: 450px;
@@ -37,10 +40,13 @@ color: black;
 }
 
 .mat-card {
-  flex: 0 1 calc(20% - 8px);
+  flex: 0 1 calc(25% - 8px);
   height: max-content;
   width: 320px;
   margin-bottom: 3%;
+}
+.buttonFav{
+  padding: 0%;
 }
 #favoriteButton{
   background-color: black;
@@ -62,7 +68,6 @@ button{
 .star{
   border-color: black;
   color: gold;
-
 }
 
 .nofavs{

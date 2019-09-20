@@ -4,7 +4,7 @@
         <div>
             <mat-card-header fxLayout="row">
               <div fxLayout="column">
-                <ng-container *ngIf="movie.favorite; else isFavorited">
+                <ng-container class= "buttonFav" *ngIf="movie.favorite; else isFavorited">
                     <button mat-button (click)="unfavoriteMovie(movie)">
                         <mat-icon class="star">
                           star
@@ -12,18 +12,17 @@
                       </button>
                 </ng-container>
                 <ng-template #isFavorited>
-
                 </ng-template>
               </div>
-                <mat-card-title>{{movie.title | truncate:['45']}} </mat-card-title>
+                <mat-card-title>{{movie.title | truncate:['40']}} </mat-card-title>
                 <mat-card-subtitle>{{movie.year}}</mat-card-subtitle>
              </mat-card-header>
           <ng-container *ngIf="movie.poster.length < 6; else noPoster">
-              <img mat-card-image src="../../assets/no_poster.jpg" alt="Poster">
+              <img mat-card-image class = "poster" src="../../assets/no_poster.jpg" alt="Poster">
            </ng-container>
            <ng-template #noPoster>
                <a [routerLink]="['/movie/',movie.id]">
-             <img mat-card-image [src]="movie.poster" alt="Poster"/>
+             <img mat-card-image  class = "poster" [src]="movie.poster" alt="Poster"/>
            </a>
            </ng-template>
       </div>

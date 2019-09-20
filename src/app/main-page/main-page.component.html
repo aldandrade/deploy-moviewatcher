@@ -4,9 +4,9 @@
     <h2>MovieWatcher</h2>
   </div>
   <div class="searchClass">
-    <mat-form-field class="searchBar">
+    <mat-form-field matRipple class="searchBar">
         <mat-label><mat-icon>search</mat-icon><b> Search a movie</b></mat-label>
-      <input matInput type="text" placeholder=''[(ngModel)]="movieTitle" (keydown.enter)="search(movieTitle)">
+      <input matInput type="text"  placeholder=''[(ngModel)]="movieTitle" (keydown.enter)="search(movieTitle)">
       <button mat-button *ngIf="movieTitle" matSuffix mat-icon-button aria-label="Clear" (click)="movieTitle=''">
         <mat-icon>close</mat-icon>
       </button>

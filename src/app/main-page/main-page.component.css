@@ -3,10 +3,13 @@
   flex-flow: row wrap;
   position: relative;
   padding: 5% 0% 0% 0%;
+  flex-grow: inherit;
+  max-height: fit-content;
 }
 .poster{
  padding: 2px;
  height: 60%;
+ object-fit: fill;
 }
 img{
   max-height: 450px;
@@ -42,6 +45,9 @@ img{
   border-color: white;
   border: 3px;
 }
+::ng-deep.mat-form-field-underline {
+  background-color: white !important;
+}
 a{
   text-decoration: none;
 }
@@ -50,7 +56,7 @@ color: black;
 }
 
 .mat-card {
-  flex: 0 1 calc(20% - 8px);
+  flex: 0 1 calc(25% - 8px);
   height: max-content;
   width: 320px;
   margin-bottom: 3%;

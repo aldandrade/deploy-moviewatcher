@@ -14,5 +14,6 @@ export class MovieModel {
   director: string;
   plot: string;
   year: string;
+  imdbRating: string;
 }
 

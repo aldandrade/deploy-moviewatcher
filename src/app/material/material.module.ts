@@ -24,7 +24,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
-import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
+import {MatNativeDateModule, MatRippleModule, RippleGlobalOptions, MAT_RIPPLE_GLOBAL_OPTIONS} from '@angular/material/core';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
@@ -58,10 +58,18 @@ const MaterialComponents = [MatToolbarModule,
                             FlexLayoutModule,
                             MatSnackBarModule];
 
+const globalRippleConfig: RippleGlobalOptions = {
+  disabled: true,
+  animation: {
+    enterDuration: 300,
+    exitDuration: 0
+  }
+};
 @NgModule({
   declarations: [],
   imports: [MaterialComponents
   ],
-  exports: [MaterialComponents]
+  exports: [MaterialComponents],
+  providers: [{provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig}]
 })
 export class MaterialModule { }
